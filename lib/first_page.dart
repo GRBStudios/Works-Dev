@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:works/home.dart';
+import 'package:works/ui/views/addPerfilView.dart';
+import 'package:works/ui/views/homeView.dart';
 
 class Firstpage extends StatelessWidget{
   static String tag = '/first-page';
@@ -47,7 +48,7 @@ class Firstpage extends StatelessWidget{
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) {
-                      return (HomePage());
+                      return (AddPerfil());
                     },
                   ),
                 );

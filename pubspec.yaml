@@ -25,10 +25,14 @@ dependencies:
   cupertino_icons: ^0.1.2
   carousel_slider: ^1.4.0
   email_validator: ^1.0.0
-  image_picker: ^0.6.2+3
   firebase_auth: ^0.15.3
   google_sign_in: ^4.1.1
   flutter_launcher_icons: ^0.7.4
+  cloud_firestore: ^0.12.9
+  provider: ^3.0.0+1
+  get_it: ^1.0.3+2
+  firebase_core: ^0.4.0+8
+  flutter_swiper: ^1.1.6
 
 
 dev_dependencies:

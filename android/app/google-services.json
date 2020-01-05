@@ -1,42 +1,79 @@
 {
   "project_info": {
-    "project_number": "897062738367",
-    "firebase_url": "https://works-prototipo.firebaseio.com",
-    "project_id": "works-prototipo",
-    "storage_bucket": "works-prototipo.appspot.com"
+    "project_number": "408043010960",
+    "firebase_url": "https://works-26d4b.firebaseio.com",
+    "project_id": "works-26d4b",
+    "storage_bucket": "works-26d4b.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:897062738367:android:8c88a641c113b9c6eea90a",
+        "mobilesdk_app_id": "1:408043010960:android:934b75fbbd9005723a9115",
         "android_client_info": {
-          "package_name": "com.inacap.works"
+          "package_name": "com.example.workers"
         }
       },
       "oauth_client": [
         {
-          "client_id": "897062738367-fa3fcoanu4qbl0i9ihqvukltmtv9m4lr.apps.googleusercontent.com",
+          "client_id": "408043010960-tsdc2ck8d1p71sjd6u0sc575hbnvkjdo.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.inacap.works",
-            "certificate_hash": "7d34edf26db34d00961d8608fe2aa276b2479921"
+            "package_name": "com.example.workers",
+            "certificate_hash": "ff1cb7733f21307eee1a76a5adf50b7ed512c627"
           }
         },
         {
-          "client_id": "897062738367-qsm5ii54h466i5esptbcses1v9bm112p.apps.googleusercontent.com",
+          "client_id": "408043010960-6k7ln2lbsdd5hk3vhml49in8nfmseo58.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAsVwEz_eqdUzdzMaZ_AKcWGwAJONRsCwc"
+          "current_key": "AIzaSyCbOGy0GwkFPlXtfiMWvlrJynnpMs8_TJI"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "897062738367-qsm5ii54h466i5esptbcses1v9bm112p.apps.googleusercontent.com",
+              "client_id": "408043010960-6k7ln2lbsdd5hk3vhml49in8nfmseo58.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:408043010960:android:deaafec2494906113a9115",
+        "android_client_info": {
+          "package_name": "com.inacap.works"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "408043010960-oqcfjnosgptqclj0iueadi35mp6afsb0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.inacap.works",
+            "certificate_hash": "78e5c004eb3534d5c840aaf2add31f3762a55687"
+          }
+        },
+        {
+          "client_id": "408043010960-6k7ln2lbsdd5hk3vhml49in8nfmseo58.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbOGy0GwkFPlXtfiMWvlrJynnpMs8_TJI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "408043010960-6k7ln2lbsdd5hk3vhml49in8nfmseo58.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

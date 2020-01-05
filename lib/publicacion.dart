@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
-import 'dart:async';
 import 'dart:io';
 
 class PublicacionPage extends StatefulWidget{
@@ -18,13 +16,7 @@ class PublicacionState extends State<PublicacionPage>{
   final _formKey = GlobalKey<FormState>();
   File _image;
 
-  Future getImage() async {
-    var image = await ImagePicker.pickImage(source: ImageSource.camera);
 
-    setState(() {
-      _image = image;
-    });
-  }
   @override
   Widget build(BuildContext context) {
 
@@ -111,12 +103,7 @@ class PublicacionState extends State<PublicacionPage>{
                       : Image.file(_image),
                 ),
 
-                MaterialButton(
-                  shape: CircleBorder(
-                  ),
-                  onPressed: getImage,
-                  child: Icon(Icons.add_a_photo),
-                ),
+
                 MaterialButton(
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30.0)

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:email_validator/email_validator.dart';
-import 'package:works/home.dart';
+import 'package:works/ui/views/addPerfilView.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -163,7 +163,7 @@ class _LoginMenuState extends State<LoginMenu>{
           Navigator.of(context).push(
             MaterialPageRoute(
               builder: (context) {
-                return (HomePage());
+                return (AddPerfil());
               },
             ),
           );
