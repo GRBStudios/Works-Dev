@@ -89,8 +89,7 @@ class Firstpage extends StatelessWidget{
               shrinkWrap: true,
               padding: EdgeInsets.only(left: 24.0, right: 24.0),
               children: <Widget>[
-                loginButton,
-                registerButton
+                loginButton
               ],
             )
         )

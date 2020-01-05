@@ -1,7 +1,10 @@
+
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/painting.dart';
 import 'package:works/src/categorias/construccion.dart';
-
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:works/core/models/postModel.dart';
@@ -9,7 +12,6 @@ import 'package:works/core/viewmodels/CRUDModel.dart';
 import 'package:works/ui/widgets/productCard.dart';
 import 'package:provider/provider.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter_swiper/flutter_swiper.dart';
 
 class HomeView extends StatefulWidget {
   @override
@@ -17,6 +19,15 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final GoogleSignIn _googleSignIn = GoogleSignIn();
+
+  Future<String> currentUser() async{
+    FirebaseUser user = await FirebaseAuth.instance.currentUser();
+    return user.uid;
+  }
+
+
   final List<String> imgList = [
     'https://www.familyhandyman.com/wp-content/uploads/2018/12/FH14SEP_ADVGAR_01-2-150x150.jpg',
     'http://www.jamaicaobserver.com/apps/pbcsi.dll/storyimage/JO/20181115/ARTICLE/181119813/AR/0/AR-181119813.jpg&maxh=332&maxw=504',
@@ -24,6 +35,7 @@ class _HomeViewState extends State<HomeView> {
     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8upBOWVWaMIGqAUmRIdcRIpVz5VRaeOGyjWVdH45hJp-Ww8Oa&s',
     'https://www.ferro.com/-/media/images/product-category/electronic-materials/product-family/family_electronic-glass-materials_300x150.jpg'
   ];
+
   int _current = 0;
 
   List<T> map<T>(List list, Function handler) {
@@ -34,11 +46,21 @@ class _HomeViewState extends State<HomeView> {
 
     return result;
   }
+  String _googleToken;
 
   List<Trabajo> trabajos;
+  @override
+  void initState() {
+    currentUser().then((data) =>
+        setState(() {
+          _googleToken = data;
+        }));
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
+
     List child = map<Widget>(
       imgList,
       (index, i) {
@@ -295,8 +317,9 @@ class _HomeViewState extends State<HomeView> {
         children: <Widget>[
           campoBusqueda,
           manualCarouselDemo,
-          StreamBuilder(
-              stream: trabajoProvider.fetchTrabajosAsStream(),
+
+              StreamBuilder(
+              stream: trabajoProvider.fetchTrabajosByGoogleId(_googleToken),
               builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
                 if (snapshot.hasData) {
                   trabajos = snapshot.data.documents

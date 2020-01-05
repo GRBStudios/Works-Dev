@@ -4,8 +4,37 @@ import '../../locator.dart';
 import '../services/api.dart';
 import '../models/postModel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+
+
 
 class CRUDModel extends ChangeNotifier {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final GoogleSignIn _googleSignIn = GoogleSignIn();
+
+  Future<FirebaseUser> _handleSignIn() async {
+    final GoogleSignInAccount googleUser = await _googleSignIn.signIn();
+    final GoogleSignInAuthentication googleAuth =
+    await googleUser.authentication;
+
+    final AuthCredential credential = GoogleAuthProvider.getCredential(
+      accessToken: googleAuth.accessToken,
+      idToken: googleAuth.idToken,
+    );
+
+    final FirebaseUser user =
+        (await _auth.signInWithCredential(credential)).user;
+    print("signed in " + user.displayName);
+    assert(!user.isAnonymous);
+    assert(await user.getIdToken() != null);
+
+    // Checking if email and name is null
+    assert(user.email != null);
+
+    return user;
+  }
+
   Api _api = locator<Api>();
 
   List<Trabajo> trabajos;
@@ -27,10 +56,11 @@ class CRUDModel extends ChangeNotifier {
         .toList();
     return trabajos;
   }*/
-  Future<Trabajo> getTrabajoByGoogleUser(
-      Trabajo data, String googleToken) async {
-    var doc = await _api.getDocumentById(googleToken);
-    return Trabajo.fromMap(doc.data, doc.documentID);
+
+
+  Stream<QuerySnapshot> fetchTrabajosByGoogleId(String googleToken) {
+
+    return _api.ref.where('googleToken', isEqualTo: googleToken).snapshots();
   }
 
   Stream<QuerySnapshot> fetchTrabajosAsStream() {

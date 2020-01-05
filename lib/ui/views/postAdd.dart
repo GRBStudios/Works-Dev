@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:works/core/models/postModel.dart';
 import 'package:provider/provider.dart';
 import '../../core/viewmodels/CRUDModel.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class AddTrabajo extends StatefulWidget {
   @override
@@ -14,6 +16,23 @@ class _AddTrabajoState extends State<AddTrabajo> {
   String titulo;
 
   String descripcion;
+  Future<String> currentUser() async{
+    FirebaseUser user = await FirebaseAuth.instance.currentUser();
+    return user.uid;
+  }
+
+
+
+  String _googleToken;
+
+  @override
+  void initState() {
+    currentUser().then((data) =>
+        setState(() {
+          _googleToken = data;
+        }));
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -94,7 +113,8 @@ class _AddTrabajoState extends State<AddTrabajo> {
                     await productProvider.addTrabajo(Trabajo(
                         titulo: titulo,
                         descripcion: descripcion,
-                        categoria: productType.toLowerCase()));
+                        categoria: productType.toLowerCase(),
+                        googleToken: _googleToken));
                     Navigator.pop(context);
                   }
                 },

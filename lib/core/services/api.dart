@@ -22,6 +22,7 @@ class Api {
     return ref.document(id).get();
   }
 
+
   Future<void> removeDocument(String id) {
     return ref.document(id).delete();
   }

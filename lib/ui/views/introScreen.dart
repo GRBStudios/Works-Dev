@@ -60,7 +60,7 @@ class _IntroScreenState extends State<IntroScreen> {
             child: FlatButton(
               child: Text("Skip"),
               onPressed: () {
-                Navigator.pushNamed(context, '/login');
+                Navigator.pushNamed(context, '/first-page');
               },
             ),
           ),
@@ -72,7 +72,7 @@ class _IntroScreenState extends State<IntroScreen> {
               onPressed: () {
                 if (_currentIndex != 2) _controller.next();
                 if (_currentIndex == 2) {
-                  Navigator.pushNamed(context, '/login');
+                  Navigator.pushNamed(context, '/first-page');
                 }
               },
             ),

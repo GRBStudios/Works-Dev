@@ -165,35 +165,11 @@ class ProfilePage extends StatelessWidget {
                       ),
                     ],
                   ),
-                  Divider(),
-                  Padding(
-                    padding: EdgeInsets.all(20),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        Text(
-                          "Reconocimientos",
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 22,
-                              fontWeight: FontWeight.normal),
-                        ),
-                        Text(
-                          "VER TODO",
-                          style: TextStyle(
-                              color: Colors.lightGreen,
-                              fontSize: 22,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                    ),
-                  ),
-                  makeCompliementsList("A Tiempo"),
-                ],
-              ),
+
+              ],
             ),
           )),
-    );
+    ));
   }
 }
 
@@ -328,86 +304,4 @@ class _ProfileWidgetState extends State<ProfileWidget> {
       ),
     );
   }
-}
-
-// AQUI VAN ICONOS DE RECONOCIMIENTOS
-
-Widget makeCompliementsList(String title) {
-  return Container(
-    padding: EdgeInsets.only(left: 5, right: 5),
-    height: 220,
-    child: Column(
-      children: <Widget>[
-        Container(
-          height: 200,
-          child: ListView(
-            padding: EdgeInsets.all(10),
-            scrollDirection: Axis.horizontal,
-            children: makeContainers(title),
-          ),
-        )
-      ],
-    ),
-  );
-}
-
-int counter = 0;
-List<Widget> makeContainers(String title) {
-  List<Container> compliementsList = [];
-  for (var i = 0; i < 6; i++) {
-    counter++;
-    compliementsList.add(Container(
-      margin: EdgeInsets.only(right: 10),
-      child: Stack(
-        children: <Widget>[
-          Column(
-            children: <Widget>[
-              ClipOval(
-                child: Image.asset(
-                  "", // ICONO RECONOCIMIENTO
-                  width: 100,
-                  height: 100,
-                  fit: BoxFit.cover,
-                ),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              Container(
-                margin: EdgeInsets.symmetric(vertical: 5.0, horizontal: 2.0),
-                child: Text(
-                  title,
-                  style: TextStyle(fontSize: 16.0, color: Colors.black),
-                ),
-              ),
-            ],
-          ),
-          Positioned(
-            left: 68,
-            top: -1,
-            child: Container(
-              width: 30,
-              height: 30,
-              decoration: BoxDecoration(
-                color: Colors.black,
-                border: Border.all(color: Colors.white),
-                borderRadius: BorderRadius.all(Radius.circular(50.0)),
-              ),
-              child: Center(
-                child: Text("0",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold)),
-              ),
-            ),
-          ),
-        ],
-      ),
-    ));
-    if (counter == 12) {
-      counter = 0;
-    }
-  }
-  return compliementsList;
 }
